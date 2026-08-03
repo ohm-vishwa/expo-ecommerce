@@ -13,7 +13,10 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "dotenv": "^17.4.2",
-    "express": "^5.2.1"
+    "@clerk/express": "^2.1.49",
+    "cloudinary": "^2.8.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "mongoose": "^8.19.3"
   }
 }
