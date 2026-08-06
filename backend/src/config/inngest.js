@@ -1,6 +1,6 @@
 import { Inngest } from "inngest";
-import { connectDB } from "./db";
-import { User } from "../models/user.model";
+import { connectDB } from "./db.js";
+import { User } from "../models/user.model.js";
 
 // Create a client to send and receive events
 export const inngest = new Inngest({ id: "ecommerce-app" });
@@ -13,7 +13,9 @@ const syncUser = inngest.createFunction(
       event.data;
     const newUser = {
       clerkId: id,
-      email: email_addresses[0]?.email_addresses,
+      email: email_addresses.find(
+        ({ id: emailId }) => emailId === event.data.primary_email_address_id,
+      )?.email_address,
       name: `${first_name || ""} ${last_name || ""}` || "User",
       imageUrl: image_url,
       addresses: [],
